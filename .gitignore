@@ -1,0 +1,66 @@
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE and editor files
+.vscode/
+.vs/
+*.sln.DotSettings
+*.user
+*.suo
+*.sln.iml
+
+# Runtime files
+app.db
+app.db-wal
+app.db-shm
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet
+packages/
+.nuget/
+
+# Package manager
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Keep README and DOCUMENTATION
+!README.md
+!PROJECT_DOCUMENTATION.md
+
+# But exclude all other markdown files
+*.md
+
+# Except for documentation folder if needed
+!docs/
+docs/**/*.md
+
+# Visual Studio cache/options directory
+.vs/
+
+# Local Environment files
+.env
+.env.local
+.env.*.local
