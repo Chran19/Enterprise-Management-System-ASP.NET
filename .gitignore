@@ -46,12 +46,12 @@ __pycache__/
 *.temp
 *.log
 
-# Keep README and DOCUMENTATION
-!README.md
-!PROJECT_DOCUMENTATION.md
-
 # But exclude all other markdown files
 *.md
+
+# But keep these specific markdown files
+!README.md
+!PROJECT_DOCUMENTATION.md
 
 # Except for documentation folder if needed
 !docs/
