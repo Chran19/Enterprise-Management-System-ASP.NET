@@ -1,0 +1,92 @@
+@model List<WebApp.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Directory";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-users"></i> Employee Directory</h1>
+        <p>Manage and search employee information</p>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <form method="get" asp-action="Index" class="search-box">
+                <input type="text" name="searchTerm" placeholder="Search by name, email, phone, or department..."
+                       value="@ViewBag.SearchTerm" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Search
+                </button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Clear
+                </a>
+            </form>
+        </div>
+        <div class="col-md-4 text-end">
+            <a href="@Url.Action("Create")" class="btn btn-success">
+                <i class="fas fa-plus"></i> Add Employee
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-list"></i> Employee List (@Model.Count)
+        </div>
+        <div class="card-body">
+            @if (Model.Count > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var employee in Model)
+                            {
+                                <tr>
+                                    <td><strong>@employee.Name</strong></td>
+                                    <td><span class="badge bg-info">@employee.Department</span></td>
+                                    <td>
+                                        <a href="mailto:@employee.Email">@employee.Email</a>
+                                    </td>
+                                    <td>
+                                        <a href="tel:@employee.Phone">@employee.Phone</a>
+                                    </td>
+                                    <td><small>@employee.CreatedAt.ToString("MMM dd, yyyy")</small></td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a href="@Url.Action("Edit", new { id = employee.EmployeeId })"
+                                                   class="btn btn-warning" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", new { id = employee.EmployeeId })"
+                                                   class="btn btn-danger" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle"></i> No employees found. <a href="@Url.Action("Create")">Add the first
+                    employee</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

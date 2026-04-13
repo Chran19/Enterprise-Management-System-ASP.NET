@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1><i class="fas fa-dashboard"></i> Dashboard</h1>
+        <p>Welcome to Professional Web Application - Manage your business operations efficiently</p>
+    </div>
+
+    <!-- Module Cards -->
+    <div class="row g-4 mb-4">
+        <!-- Products -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100" style="border-left: 4px solid #667eea;">
+                <div class="card-body text-center">
+                    <div style="font-size: 2.5rem; color: #667eea; margin-bottom: 1rem;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h5 class="card-title">Product Management</h5>
+                    <p class="card-text text-muted">Manage your product catalog with complete CRUD operations</p>
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary btn-sm mt-3">
+                        <i class="fas fa-arrow-right"></i> Go to Products
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Grades -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100" style="border-left: 4px solid #198754;">
+                <div class="card-body text-center">
+                    <div style="font-size: 2.5rem; color: #198754; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h5 class="card-title">Student Grades</h5>
+                    <p class="card-text text-muted">Track and manage student grades with analytics</p>
+                    <a href="@Url.Action("Index", "StudentGrade")" class="btn btn-success btn-sm mt-3">
+                        <i class="fas fa-arrow-right"></i> Go to Grades
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employees -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100" style="border-left: 4px solid #0dcaf0;">
+                <div class="card-body text-center">
+                    <div style="font-size: 2.5rem; color: #0dcaf0; margin-bottom: 1rem;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h5 class="card-title">Employee Directory</h5>
+                    <p class="card-text text-muted">Maintain employee information with search capability</p>
+                    <a href="@Url.Action("Index", "Employee")" class="btn btn-info btn-sm mt-3">
+                        <i class="fas fa-arrow-right"></i> Go to Employees
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100" style="border-left: 4px solid #dc3545;">
+                <div class="card-body text-center">
+                    <div style="font-size: 2.5rem; color: #dc3545; margin-bottom: 1rem;">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text text-muted">Register and manage system users securely</p>
+                    <a href="@Url.Action("Index", "User")" class="btn btn-danger btn-sm mt-3">
+                        <i class="fas fa-arrow-right"></i> Go to Users
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mb-4"><i class="fas fa-star"></i> Key Features</h3>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-light" role="alert" style="border-left: 4px solid #667eea;">
+                <h6 class="alert-heading"><i class="fas fa-database"></i> SQLite Database</h6>
+                All data is persisted in a robust SQLite database with proper relationships and normalization.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-light" role="alert" style="border-left: 4px solid #198754;">
+                <h6 class="alert-heading"><i class="fas fa-lock"></i> ADO.NET Security</h6>
+                Parameterized queries prevent SQL injection and ensure secure data operations.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-light" role="alert" style="border-left: 4px solid #0dcaf0;">
+                <h6 class="alert-heading"><i class="fas fa-desktop"></i> Responsive UI</h6>
+                Modern, responsive interface that works seamlessly on all devices.
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="alert alert-light" role="alert" style="border-left: 4px solid #dc3545;">
+                <h6 class="alert-heading"><i class="fas fa-check"></i> Validation</h6>
+                Comprehensive input validation with user-friendly error messages.
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="card mt-5">
+        <div class="card-header">
+            <i class="fas fa-code"></i> Technical Stack
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Backend:</strong>
+                    <ul class="list-unstyled mt-2">
+                        <li><i class="fas fa-check text-success"></i> ASP.NET Core MVC</li>
+                        <li><i class="fas fa-check text-success"></i> .NET 10.0</li>
+                        <li><i class="fas fa-check text-success"></i> C# 13</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <strong>Database:</strong>
+                    <ul class="list-unstyled mt-2">
+                        <li><i class="fas fa-check text-success"></i> SQLite</li>
+                        <li><i class="fas fa-check text-success"></i> ADO.NET</li>
+                        <li><i class="fas fa-check text-success"></i> Parameterized Queries</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <strong>Frontend:</strong>
+                    <ul class="list-unstyled mt-2">
+                        <li><i class="fas fa-check text-success"></i> Bootstrap 5</li>
+                        <li><i class="fas fa-check text-success"></i> Font Awesome Icons</li>
+                        <li><i class="fas fa-check text-success"></i> Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
