@@ -1,0 +1,90 @@
+@model WebApp.Models.UserRegistration
+
+@{
+    ViewData["Title"] = "Register User";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-user-plus"></i> Register New User</h1>
+        <p>Create a new user account</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-key"></i> Registration Form
+                </div>
+                <div class="card-body">
+                    <form asp-action="Register" method="post" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label">Username <span
+                                class="text-danger">*</span></label>
+                                <input type="text" asp-for="Username" class="form-control" placeholder="Enter username"
+                                       required>
+                                <small class="form-text text-muted">At least 3 characters</small>
+                                <span asp-validation-for="Username" class="invalid-feedback"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Email Address <span
+                                    class="text-danger">*</span></label>
+                                    <input type="email" asp-for="Email" class="form-control" placeholder="user@example.com"
+                                           required>
+                                    <span asp-validation-for="Email" class="invalid-feedback"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Password" class="form-label">Password <span
+                                        class="text-danger">*</span></label>
+                                        <input type="password" asp-for="Password" class="form-control" placeholder="Enter password"
+                                               required>
+                                        <small class="form-text text-muted">At least 6 characters</small>
+                                        <span asp-validation-for="Password" class="invalid-feedback"></span>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label asp-for="ConfirmPassword" class="form-label">Confirm Password <span
+                                            class="text-danger">*</span></label>
+                                            <input type="password" asp-for="ConfirmPassword" class="form-control"
+                                                   placeholder="Confirm password" required>
+                                            <span asp-validation-for="ConfirmPassword" class="invalid-feedback"></span>
+                                        </div>
+
+                                        <div class="d-flex gap-2">
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-check"></i> Register
+                                            </button>
+                                            <a href="@Url.Action("Index")" class="btn btn-secondary">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-info" role="alert">
+                                <h6><i class="fas fa-shield-alt"></i> Security Requirements</h6>
+                                <ul style="margin-bottom: 0; padding-left: 1.5rem;">
+                                    <li>Username must be at least 3 characters</li>
+                                    <li>Valid email address required</li>
+                                    <li>Password must be at least 6 characters</li>
+                                    <li>Passwords must match</li>
+                                    <li>Passwords are hashed with SHA256</li>
+                                    <li>Usernames and emails must be unique</li>
+                                </ul>
+                            </div>
+
+                            <div class="alert alert-light" role="alert">
+                                <h6><i class="fas fa-info-circle"></i> Already a user?</h6>
+                                <p class="mb-0">
+                                    <a href="@Url.Action("Index")">View all users</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

@@ -1,0 +1,73 @@
+@model WebApp.Models.StudentGrade
+
+@{
+    ViewData["Title"] = "Edit Grade";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-edit"></i> Edit Grade</h1>
+        <p>Update student grade information</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle"></i> Grade Information
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <input type="hidden" asp-for="GradeId" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="mb-3">
+                            <label asp-for="StudentName" class="form-label">Student Name <span
+                                class="text-danger">*</span></label>
+                                <input type="text" asp-for="StudentName" class="form-control" placeholder="Enter full name"
+                                       required>
+                                <span asp-validation-for="StudentName" class="invalid-feedback"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Subject" class="form-label">Subject <span
+                                    class="text-danger">*</span></label>
+                                    <select asp-for="Subject" class="form-select" required>
+                                        <option value="">-- Select Subject --</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="English">English</option>
+                                        <option value="Science">Science</option>
+                                        <option value="History">History</option>
+                                        <option value="Geography">Geography</option>
+                                        <option value="Computer Science">Computer Science</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                    </select>
+                                    <span asp-validation-for="Subject" class="invalid-feedback"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Marks" class="form-label">Marks (0-100) <span
+                                        class="text-danger">*</span></label>
+                                        <input type="number" asp-for="Marks" class="form-control" placeholder="0-100" min="0"
+                                               max="100" required>
+                                        <small class="form-text text-muted">Enter marks between 0 and 100</small>
+                                        <span asp-validation-for="Marks" class="invalid-feedback"></span>
+                                    </div>
+
+                                    <div class="d-flex gap-2">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-save"></i> Update Grade
+                                        </button>
+                                        <a href="@Url.Action("Index")" class="btn btn-secondary">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

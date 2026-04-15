@@ -17,6 +17,9 @@ obj/
 *.user
 *.suo
 *.sln.iml
+.idea/
+*.swp
+*.swo
 
 # Runtime files
 app.db
@@ -46,21 +49,16 @@ __pycache__/
 *.temp
 *.log
 
-# But exclude all other markdown files
-*.md
-
-# But keep these specific markdown files
-!README.md
-!PROJECT_DOCUMENTATION.md
-
-# Except for documentation folder if needed
-!docs/
-docs/**/*.md
-
-# Visual Studio cache/options directory
-.vs/
+# Project-specific
+wwwroot/
+Properties/
 
 # Local Environment files
 .env
 .env.local
 .env.*.local
+
+# Markdown files (but whitelist important docs)
+*.md
+!README.md
+!PROJECT_DOCUMENTATION.md

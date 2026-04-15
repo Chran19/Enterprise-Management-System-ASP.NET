@@ -1,0 +1,96 @@
+@model List<WebApp.Models.StudentSummary>
+
+@{
+    ViewData["Title"] = "Student Summary";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1><i class="fas fa-chart-bar"></i> Student Performance Summary</h1>
+        <p>Average marks per student and overall statistics</p>
+    </div>
+
+    <div class="mb-4">
+        <a href="@Url.Action("Index")" class="btn btn-primary">
+            <i class="fas fa-list"></i> Back to Grades
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <i class="fas fa-chart-line"></i> Summary Statistics
+        </div>
+        <div class="card-body">
+            @if (Model.Count > 0)
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Subjects</th>
+                                <th>Average Marks</th>
+                                <th>Grade</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var student in Model)
+                            {
+                                string gradeLabel = student.AverageMarks >= 90 ? "A" :
+                                                  student.AverageMarks >= 80 ? "B" :
+                                                  student.AverageMarks >= 70 ? "C" :
+                                                  student.AverageMarks >= 60 ? "D" : "F";
+                                
+                                string badgeClass = student.AverageMarks >= 90 ? "bg-success" :
+                                                   student.AverageMarks >= 80 ? "bg-info" :
+                                                   student.AverageMarks >= 70 ? "bg-warning" : "bg-danger";
+
+                                string statusBadge = student.AverageMarks >= 60 ? "bg-success" : "bg-danger";
+                                string statusText = student.AverageMarks >= 60 ? "Pass" : "Fail";
+
+                                <tr>
+                                    <td><strong>@student.StudentName</strong></td>
+                                    <td><span class="badge bg-secondary">@student.TotalSubjects subject(s)</span></td>
+                                    <td><strong>@Math.Round(student.AverageMarks, 2)/100</strong></td>
+                                    <td><span class="badge @badgeClass">Grade @gradeLabel</span></td>
+                                    <td><span class="badge @statusBadge">@statusText</span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="alert alert-light" role="alert">
+                            <h6 class="alert-heading"><i class="fas fa-users"></i> Total Students</h6>
+                            <h3 class="mb-0">@Model.Count</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-light" role="alert">
+                            <h6 class="alert-heading"><i class="fas fa-check-circle"></i> Passed</h6>
+                            <h3 class="mb-0">@Model.Count(s => s.AverageMarks >= 60)</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-light" role="alert">
+                            <h6 class="alert-heading"><i class="fas fa-times-circle"></i> Failed</h6>
+                            <h3 class="mb-0">@Model.Count(s => s.AverageMarks < 60)</h3>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info" role="alert">
+                    <i class="fas fa-info-circle"></i> No student data available. <a
+                    href="@Url.Action("Create", "StudentGrade")">Add grades first</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
